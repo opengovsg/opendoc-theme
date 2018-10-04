@@ -7,7 +7,6 @@ Optional Parameters:
     * h_min        (int)    :   1    - the minimum TOC header level to use; any header lower than this value will be ignored
     * h_max        (int)    :   6    - the maximum TOC header level to use; any header greater than this value will be ignored
     * item_class   (string) :   ''   - add custom class(es) for each list item; has support for '%level%' placeholder, which is the current heading level
-    * baseurl      (string) :   ''   - add a base url to the TOC links for when your TOC is on another page than the actual content
     * anchor_class (string) :   ''   - add custom class(es) for each anchor element
 
 Output:
@@ -79,7 +78,7 @@ Output:
             {% endunless %}
 
             {% capture my_toc %}{{ my_toc }} 
-{{ space }}-{{ listModifier }} {{ listItemClass }} [{{ header }}]({% if include.baseurl %}{{ include.baseurl }}/{% endif %}{% if page.url %}{{ page.url }}{% endif %}{% if headerLevel > minHeader %}#{{ html_id }}{% endif %}){% if include.anchor_class %}{:.{{ include.anchor_class }}}{% endif %}{% endcapture %}
+{{ space }}-{{ listModifier }} {{ listItemClass }} [{{ header }}]({% if page.url %}{{ page.url | relative_url }}{% endif %}{% if headerLevel > minHeader %}#{{ html_id }}{% endif %}){% if include.anchor_class %}{:.{{ include.anchor_class }}}{% endif %}{% endcapture %}
         {% endfor %}
     {% endfor %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ my_toc | markdownify | strip  }}
