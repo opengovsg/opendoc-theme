@@ -8,10 +8,6 @@ baseurl: ''
 kramdown:
   auto_id_stripping: true
 section_order:
-  - Getting Started
-  - Using Markdown
-  - Useful References
-  - Contribute
 repository: opendocsg/opendoc-theme
 server_PROD: https://search.opendoc.sg
 server_DEV: https://search-staging.opendoc.sg
