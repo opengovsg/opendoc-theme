@@ -263,7 +263,7 @@
     var generateResultHTML = function (result, i) {
         var element = document.createElement('a')
         element.className = 'search-link nav-link'
-        var urlParts = ('{{site.baseurl}}' + result.url).split('/')
+        var urlParts = result.url.split('/')
         urlParts = urlParts.filter(function (part) {
             return part !== ''
         })
