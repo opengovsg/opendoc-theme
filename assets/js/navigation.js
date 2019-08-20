@@ -1,3 +1,5 @@
+---
+---
 (function () {
     var main = document.getElementsByTagName('main')[0]
     var tod = document.getElementsByClassName('table-of-directories')[0]
@@ -11,8 +13,10 @@
     var searchBoxElement = document.getElementById('search-box')
     var indexDiv = document.getElementById('index-div')
 
+    var preloadPages = '{{ site.preload_pages | default: true }}' === 'true'
+
     // If subfolder was accessed directory via url, load the subfolder's pages
-    if (documentTitle && documentTitle.innerText.trim()) {
+    if (documentTitle && documentTitle.innerText.trim() && preloadPages) {
         loadDocumentContent(documentTitle.innerText, 1)
     }
 

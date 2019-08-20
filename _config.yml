@@ -12,7 +12,7 @@ server_DEV: https://search-staging.opendoc.sg
 
 fast_build: true
 offline: false
-
+preload_pages: true
 
 subtitle: this is a subtitle
 order:
