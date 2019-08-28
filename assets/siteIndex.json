@@ -8,9 +8,9 @@
 {%- assign split_content = page.content | markdownify | split: '<h2' | splice: 1  -%}
         
 {%- comment -%}Deal with h1 section{%- endcomment -%}
-{%- assign page_header = split_content.first | split: '>' -%}
-{%- assign page_header = page_header[1] | split: '</h1' -%}
-{%- assign page_header = page_header[0] -%}
+{%- assign page_header = split_content.first | split: '</h1>' -%}
+{%- assign page_header = page_header.first | split: '">' -%}
+{%- assign page_header = page_header.last | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' ' | replace: '\', '' | strip | smartify | normalize_whitespace -%}
 {%- assign header_section = '<h1' | append: split_content.first  | strip_html | newline_to_br | strip_newlines | replace: '<br />', ' ' | replace: '\', '' | strip | smartify | normalize_whitespace -%}
 {%- capture item -%}
 {
